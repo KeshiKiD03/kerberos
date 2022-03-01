@@ -24,7 +24,7 @@ root@kserver:/# history
    20  tree /var/lib/krb5kdc/
    21  **vim /etc/krb5kdc/kadm5.acl**
    22  kadmin.local -q "addprinc alpaca"
-   23  kadmin.local -q "addprinc pere"
+   23  **kadmin.local -q "addprinc pere"**
    24  kadmin.local -q "addprinc marta"
    25  kadmin.local -q "addprinc anna"
    26  kadmin.local
@@ -32,7 +32,7 @@ root@kserver:/# history
    28  /etc/init.d/krb5-admin-server start
    29  /etc/init.d/krb5-kdc start
    30  apt-get install procps
-   31  apt-get install procps
+   31  **apt-get install procps**
    32  nmap localhost
    33  kinit pere
    34  klist

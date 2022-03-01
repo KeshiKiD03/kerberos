@@ -1,10 +1,10 @@
 FROM debian:11
 LABEL version="1.0"
 LABEL author="@edt ASIX-M06"
-LABEL subject="KERBEROS client"
+LABEL subject="KERBEROS server"
 RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get -y install krb5-user mlocate procps iproute2 tree nmap nano vim less finger passwd libpam-pwquality libpam-mount libpam-mkhomedir libpam-ldapd libnss-ldapd nslcd nslcd-utils ldap-utils openssh-client openssh-server 
+RUN apt-get -y install krb5-admin-server mlocate procps iproute2 tree nmap nano vim less finger passwd libpam-pwquality libpam-mount libpam-mkhomedir libpam-ldapd libnss-ldapd nslcd nslcd-utils ldap-utils openssh-client openssh-server 
 # samba samba-client
 RUN mkdir /opt/docker
 COPY . /opt/docker/
