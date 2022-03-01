@@ -6,7 +6,7 @@ cp /opt/docker/krb5.conf /etc/krb5.conf
 cp /opt/docker/kdc.conf  /var/kerberos/krb5kdc/kdc.conf
 cp /opt/docker/kadm5.acl /var/kerberos/krb5kdc/kadm5.acl
 
-kdb5_util create -s -P masterkey
+kdb5_util create -s -P masterkey # Crea la DATABASE # Importante ponerlo porque pide contraseña
 
 # Usuaris que s'utilitzaran amb LDAP de IP
 for user in anna pere marta jordi pau user{01..10} 
@@ -27,3 +27,10 @@ do
 done
 
 kadmin.local -q "addprinc -randkey host/sshd.edt.org"
+
+/etc/init.d/krb5-admin-server start
+/etc/init.d/krb5-kdc start
+/etc/init.d/krb5-admin-server status
+/etc/init.d/krb5-kdc status
+
+/bin/bash

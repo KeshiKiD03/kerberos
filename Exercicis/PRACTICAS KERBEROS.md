@@ -21,9 +21,9 @@ https://geekland.eu/aprender-markdown-en-minutos/
 
 * Servidores en detach
 
-* adduser pere / pau / jordi / anna / marta / admin
+* USUARIOS pere (kpere) / pau (kpau, rol: admin) / jordi (kjordi) / anna (kanna) / marta (kmarta) / marta/admin (kmarta rol:admin), julia (kjulia), admin (kadmin rol:admin).
     
-* adduser kuser01 ... kuser06
+* USUARIOS kuser01 ... kuser06 - PASSWD (kuser01....kuser06)
 
 * nomHost: `kserver.edt.org`
 
@@ -65,10 +65,10 @@ cp /opt/docker/krb5.conf /etc/krb5.conf
 cp /opt/docker/kdc.conf  /var/kerberos/krb5kdc/kdc.conf
 cp /opt/docker/kadm5.acl /var/kerberos/krb5kdc/kadm5.acl
 
-kdb5_util create -s -P masterkey
+kdb5_util create -s -P masterkey # Crea la DATABASE # Importante ponerlo porque pide contraseña
 
 # Usuaris que s'utilitzaran amb LDAP de IP
-for user in anna pere marta jordi pau user{01..10} 
+for user in anna pere marta jordi pau user{01..06} 
 do
   kadmin.local -q "addprinc -pw k$user $user"
 done 
@@ -92,12 +92,57 @@ kadmin.local -q "addprinc -randkey host/sshd.edt.org"
 /etc/init.d/krb5-admin-server status
 /etc/init.d/krb5-kdc status
 
+/bin/bash
+
 ```
 
 3. Modificar el kadm5.acl
 
-4.
+```bash
+*/admin@EDT.ORG *
+admin@EDT.ORG *
+# marta@EDT.ORG *
+super@EDT.ORG *
+pau@EDT.ORG *
+```
 
-5.
+4. Modificar el krb5.conf
 
-6.
+```
+[realms]
+	EDT.ORG = {
+		kdc = kserver.edt.org
+		admin_server = kserver.edt.org
+	}
+
+[domain_realm]
+	.edt.org = EDT.ORG
+	edt.org = EDT.ORG
+```
+
+5. Modificar el kdc.conf
+
+```
+[kdcdefaults]
+    kdc_ports = 750,88
+
+[realms]
+    EDT.ORG = {
+        database_name = /var/lib/krb5kdc/principal
+        admin_keytab = FILE:/etc/krb5kdc/kadm5.keytab
+        acl_file = /etc/krb5kdc/kadm5.acl
+        key_stash_file = /etc/krb5kdc/stash
+        kdc_ports = 750,88
+        max_life = 10h 0m 0s
+        max_renewable_life = 7d 0h 0m 0s
+        master_key_type = des3-hmac-sha1
+        #supported_enctypes = aes256-cts:normal aes128-cts:normal
+        default_principal_flags = +preauth
+    }
+```
+
+6. Generar el DOCKERFILE
+
+7. 
+
+8. 
