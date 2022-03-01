@@ -1,32 +1,29 @@
 #! /bin/bash
+# Kserver
+# @edt ASIX M11-SAD Curs 2021-2022
 
-# Creacio Usuaris
+cp /opt/docker/krb5.conf /etc/krb5.conf
+cp /opt/docker/kdc.conf  /var/kerberos/krb5kdc/kdc.conf
+cp /opt/docker/kadm5.acl /var/kerberos/krb5kdc/kadm5.acl
 
-mkdir /var/lib/samba/public && chmod 777 /var/lib/samba/public
-uname -a > /var/lib/samba/public/uname.txt
+kdb5_util create -s -P masterkey
 
-cp /opt/docker/ldap.conf /etc/ldap/ldap.conf
-cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
-cp /opt/docker/nslcd.conf /etc/nslcd.conf
+# Usuaris que s'utilitzaran amb LDAP de IP
+for user in anna pere marta jordi pau user{01..10} 
+do
+  kadmin.local -q "addprinc -pw k$user $user"
+done 
 
-/usr/sbin/nscd
-/usr/sbin/nslcd
+kadmin.local -q "addprinc -pw kmarta marta/admin"
+kadmin.local -q "addprinc -pw kpere pere/admin"
+kadmin.local -q "addprinc -pw kpau  pau/admin"
+kadmin.local -q "addprinc -pw ksuper super"
+kadmin.local -q "addprinc -pw kadmin admin "
 
-bash /opt/docker/users_ldap.sh && echo "Password Success 100"
+# Usuaris que s'utilitzaran amb /etc/passwd de IP
+for user in kuser{01..06}
+do
+  kadmin.local -q "addprinc -pw $user $user"
+done
 
-#groupadd WinAdmins
-#groupadd WinUsers
-#groupadd WinGuests
-#groupadd WinBackupOperators
-#groupadd WinRestoreOperators
-
-#usermod -g WinAdmins -G WinUsers pere
-#usermod -g WinBackupOperators -G WinUsers pau
-#usermod -g WinRestoreOperators -G WinUsers anna
-
-cp smb.alone.conf /etc/samba/smb.conf
-#mkdir /run/smbd
-/usr/sbin/smbd && echo "smb Active"
-/usr/sbin/nmbd -F && echo "nmb Active"
-
-testparm
+kadmin.local -q "addprinc -randkey host/sshd.edt.org"
