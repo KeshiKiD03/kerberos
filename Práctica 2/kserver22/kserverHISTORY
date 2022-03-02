@@ -1,0 +1,81 @@
+
+    1  apt-get install krb-workstatio
+    2  apt-get install krb-workstation
+    3  apt-cacher krb5
+    4  apt-cacher search krb5
+    5  apt-cache search krb5
+    6  apt-get update
+    7  apt-get install krb5-admin-server
+    8  apt-get install tree
+    9  apt-get install mlocate nmap
+   10  updatedb
+   11  apt-get -L krb5-admin-server
+   12  apt-get install less
+   13  apt-get -L krb5-admin-server | less
+   14  dpkg -L krb5-admin-server | less
+   15  locate krb5
+   16  locate krb5 | less
+   17  #vi /etc/krb5.conf 
+   18  apt-get install vim
+   19  apt-get install nano
+#   20  vim /etc/krb5.conf 
+   21  cp /etc/krb5.conf /etc/krb5.conf.bk
+   22  vim /etc/krb5.conf 
+   23  locate krb5.cong
+   24  locate krb5.conf
+   25  locate kbc.conf
+   26  locate kdc.conf
+   27  tree /etc/krb5kdc
+   28  vim /etc/krb5kdc/kdc.conf
+#   29  vim /etc/krb5kdc/kdc.conf
+   30  kdb5_util create -s
+   31  tree /var/lib/krb5kdc/
+   32  locate kadmin5.acl
+   33  locate kadmn5.acl
+   34  locate kadm5.acl
+   35  tree /var/kerberos/krb5kdc/kadm5.acl 
+   36  tree /var/kerberos/krb5kdc/
+   37  vim /etc/krb5kdc/kadm5.conf
+#   38  vim /etc/krb5kdc/kadm5.acl
+   39  #kadmin
+   40  #kadmin.local
+   41  kadmin.local -q "addprinc alpaca"
+   42  #kalpaca
+   43  kadmin.local
+   44  kadmin.local -q "addprinc pere"
+   45  kadmin.local -q "addprinc anna"
+   46  kadmin.local -q "addprinc marta"
+   47  kadmin.local -q "addprinc marta"
+   48  kadmin.local -q "listprincs"
+   49  kadmin.local
+   50  kadmin.local -q "getprinc anna"
+   51  kadmin.local -q "getprinc anna"
+   52  dpkg -L krb5-admin-server
+   53  dpkg -L krb5-admin-server | grep service
+   54  #krb5_newrealm 
+#   55  /etc/init.d/krb5-admin-server start
+   56  /etc/init.d/krb5-admin-server ststus
+#   57  /etc/init.d/krb5-kdc start
+   58  /etc/init.d/krb5-kdc status
+   59  /etc/init.d/krb5-admin-server status
+   60  # engegar el servidor kerberos
+   61  apt-get install procps
+   62  ps ax
+   63  nmap localhost
+   64  kinit pere
+   65  klist
+   66  kdestroy 
+   67  klist
+   68  kinit pere
+   69  klist
+   70  kinit anna
+   71  klist
+   72  kdestroy 
+   73  klist
+   74  kadmin.local 
+   75  kadmin
+   76  kadmin pere
+   77  kadmin -p pere
+   78  kadmin -p marta
+   79  kadmin -p pere
+   80  kadmin -p pere/admin
