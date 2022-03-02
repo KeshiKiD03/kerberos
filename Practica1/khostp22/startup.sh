@@ -30,9 +30,9 @@ groupadd kusers
 useradd -g users -G local01 local01
 useradd -g users -G local01 local02
 useradd -g users -G local01 local03
-useradd -g users -G kusers user01
-useradd -g users -G kusers user02
-useradd -g users -G kusers user03
+useradd -g users -G kusers kuser01
+useradd -g users -G kusers kuser02
+useradd -g users -G kusers kuser03
 
 # Añade password
 

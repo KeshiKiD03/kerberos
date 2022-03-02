@@ -144,10 +144,14 @@ pau@EDT.ORG *
 6. Generar el DOCKERFILE.
 
 ```
-docker build -t keshikid03/k22:kserver .
+docker build -t keshikid03/krb22:kserver .
+
+docker build -t keshikid03/krb22:kclient .
+
+docker build -t keshikid03/krb22:khostp .
 ```
 
-7. Verificar
+7. Verificar Servidor y Kclient.
 
 * kinit pere
 
