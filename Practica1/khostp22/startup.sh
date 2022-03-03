@@ -43,6 +43,4 @@ echo -e "local03\nlocal03" | passwd local03
 /etc/init.d/krb5-admin-server start
 /etc/init.d/krb5-kdc start
 
-
-
-
+/bin/bash
