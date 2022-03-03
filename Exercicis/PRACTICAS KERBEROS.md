@@ -159,6 +159,10 @@ docker build -t keshikid03/krb22:khostp .
 
 * klist
 
-* listprincs
+* kadmin -p pere
 
-8. 
+  * listprincs / addprinc / delprinc / modprinc / renprinc / cpw / getprinc
+
+8. Verificar con khost de PAM.
+
+* 

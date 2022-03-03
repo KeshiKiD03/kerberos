@@ -19,7 +19,7 @@ kdb5_util create -s -P masterkey # Crea la BD con Masterkey
 
 # Añade grupo local
 
-groupadd local01
+groupadd localU
 
 # Añade un grupo kusers
 
@@ -27,9 +27,9 @@ groupadd kusers
 
 # Añadir usuarios
 
-useradd -g users -G local01 local01
-useradd -g users -G local01 local02
-useradd -g users -G local01 local03
+useradd -g users -G localU local01
+useradd -g users -G localU local02
+useradd -g users -G localU local03
 useradd -g users -G kusers kuser01
 useradd -g users -G kusers kuser02
 useradd -g users -G kusers kuser03

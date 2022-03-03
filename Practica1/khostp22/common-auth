@@ -14,7 +14,7 @@
 # pam-auth-update(8) for details.
 auth	[success=2 default=ignore]	pam_unix.so nullok
 auth	[success=1 default=ignore]	pam_ldap.so use_first_pass #minimum_uid=1000 use_first_pass
-auth        sufficient    pam_krb5.so 
+# auth        sufficient    pam_krb5.so 
 
 auth	requisite			pam_deny.so
 
