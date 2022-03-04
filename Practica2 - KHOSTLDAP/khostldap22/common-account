@@ -12,14 +12,28 @@
 # pam-auth-update to manage selection of other modules.  See
 # pam-auth-update(8) for details.
 #
-account [success=2 new_authtok_reqd=done default=ignore]        pam_unix.so
 
-#account     sufficient    pam_krb5.so
+### OLD
+
+# account [success=2 new_authtok_reqd=done default=ignore]        pam_unix.so
+
+
+### NEW
+
 account [success=1 default=ignore]      pam_ldap.so
+account sufficient			pam_krb5.so
 
-account requisite                       pam_deny.so
+account required			pam_unix.so
 
-account required                        pam_permit.so
+
+### OLD
+
+#account [success=1 default=ignore]      pam_ldap.so
+
+#account requisite                       pam_deny.so
+
+# account required                        pam_permit.so
+
 
 #per-package modules (the "Primary" block)
 #account	[success=2 new_authtok_reqd=done default=ignore]	pam_unix.so 

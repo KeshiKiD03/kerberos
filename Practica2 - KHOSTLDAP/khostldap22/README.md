@@ -10,5 +10,5 @@
 Executarem l'startup amb bash:
 
 ```
-docker run --rm --name khostp.edt.org -h khostp.edt.org --net 2hisx -it keshikid03/krb22:khostp
+docker run --rm --name khostp.edt.org -h khostp.edt.org --net 2hisx -it keshikid03/krb22:khostp /bin/bash
 ```
