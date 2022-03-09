@@ -51,3 +51,12 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
     * klist
 
     * listprincs
+
+
+### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KHOSTREAL (MINIMAL DEBIAN)
+
+## DEBIAN
+
+DOCKER + CONEXIÓN A AWS (TODO DESDE MI ORDENADOR POR SSH)
+
+INSTALAR KERBEROS USER
