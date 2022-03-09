@@ -55,6 +55,11 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 ### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KHOSTREAL (MINIMAL DEBIAN)
 
+Accedir al kserver de AWS:
+
+posar a /etc/hosts l'adreça IP del servidor
+''' A.B.C.D kserver.edt.org kserver '''
+
 ## DEBIAN
 
 DOCKER + CONEXIÓN A AWS (TODO DESDE MI ORDENADOR POR SSH)
