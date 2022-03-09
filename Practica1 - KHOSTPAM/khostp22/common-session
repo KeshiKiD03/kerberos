@@ -11,18 +11,31 @@
 # pam-auth-update to manage selection of other modules.  See
 # pam-auth-update(8) for details.
 
-## NEW
+## NEW - JOAN
 
-session     optional      pam_keyinit.so revoke
-session     required      pam_limits.so
--session     optional      pam_systemd.so
-session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
-session	    optional	  pam_mkhomedir.so
-session     optional      pam_krb5.so
-session     required      pam_unix.so
-session	    optional	  pam_mount.so
+session	[default=1]			pam_permit.so
+session	requisite			pam_deny.so
+session	required			pam_permit.so
+session	required	pam_unix.so 
+session	optional	pam_mount.so
+session	[success=ok default=ignore]	pam_ldap.so minimum_uid=1000
+session	optional	pam_systemd.so 
+session optional	pam_mkhomedir.so
 
-## OLD
+
+
+## OLD RECENTLY - EDT
+
+#session     optional      pam_keyinit.so revoke
+#session     required      pam_limits.so
+#-session     optional      pam_systemd.so
+#session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+#session	    optional	  pam_mkhomedir.so
+#session     optional      pam_krb5.so
+#session     required      pam_unix.so
+#session	    optional	  pam_mount.so
+
+## OLD - KESHI
 
 #session	[default=1]			pam_permit.so
 #session	requisite			pam_deny.so
