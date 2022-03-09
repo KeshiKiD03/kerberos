@@ -20,6 +20,8 @@
 
 ### NEW
 
+account [success=1 default=ignore]	pam_ldap.so
+
 account sufficient			pam_krb5.so
 
 account required			pam_unix.so
