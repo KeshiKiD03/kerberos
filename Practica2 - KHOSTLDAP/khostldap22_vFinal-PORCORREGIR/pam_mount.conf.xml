@@ -27,7 +27,7 @@
     <volume
        user="*"
        fstype="tmpfs"
-       mountpoint="~/%(GROUP)/%(USER)"
+       mountpoint="~/%(USER)"
        options="size=100M" 
      />
 
