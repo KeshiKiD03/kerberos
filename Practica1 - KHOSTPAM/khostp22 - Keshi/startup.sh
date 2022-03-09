@@ -6,6 +6,7 @@
 # Copiar arxius necesaris
 
 cp /opt/docker/krb5.conf /etc/krb5.conf 	# Sobreescrivim els fitxers per els nostres.
+
 #cp /opt/docker/kdc.conf /etc/krb5kdc/kdc.conf
 #cp /opt/docker/kadm5.acl /etc/krb5kdc/kadm5.acl
 
