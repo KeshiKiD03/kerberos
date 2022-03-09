@@ -13,7 +13,7 @@
 # pam-auth-update(8) for details.
 #
 
-### OLD
+### OLD - KESHI
 
 # account [success=2 new_authtok_reqd=done default=ignore]        pam_unix.so
 
@@ -21,7 +21,7 @@
 
 
 
-### NEW
+### NEW - JOAN
 
 account	[success=2 new_authtok_reqd=done default=ignore]	pam_unix.so 
 #account	[success=1 default=ignore]	pam_ldap.so 
@@ -37,7 +37,7 @@ account	required			pam_permit.so
 
 
 
-### OLD
+### OLD - KESHI
 
 #account [success=1 default=ignore]      pam_ldap.so
 
