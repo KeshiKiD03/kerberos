@@ -13,7 +13,7 @@
 # pam-auth-update to manage selection of other modules.  See
 # pam-auth-update(8) for details.
 
-### NEW
+### NEW - JOAN
 
 auth	[success=2 default=ignore]	pam_unix.so nullok
 #auth	[success=1 default=ignore]	pam_ldap.so use_first_pass
@@ -23,7 +23,7 @@ auth	requisite			pam_deny.so
 auth	required			pam_permit.so
 
 
-### OLD
+### OLD - EDT
 
 #auth        required      pam_env.so
 #auth        sufficient    pam_unix.so try_first_pass nullok
