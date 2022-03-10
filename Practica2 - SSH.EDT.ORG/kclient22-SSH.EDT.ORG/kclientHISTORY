@@ -1,0 +1,15 @@
+
+    1  apt-get update
+    2  apt-get install vim nmap procps krb5-admin-user
+    3  apt-get install vim nmap procps krb5-admin-users
+    4  apt-get install vim nmap procps krb5-users
+    5  apt-get install vim nmap procps krb5-user
+    6  vim /etc/krb5.conf 
+    7  kinit pere
+    8  klist
+    9  kadmin.local
+   10  kadmin marta
+   11  kadmin marta
+   12  kadmin -p marta
+   13  nmap kserver.edt.org
+   14  history 
