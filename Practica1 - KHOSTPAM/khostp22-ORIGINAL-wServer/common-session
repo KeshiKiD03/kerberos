@@ -21,9 +21,6 @@ session	    optional	  pam_mkhomedir.so
 session     optional      pam_krb5.so
 session     required      pam_unix.so
 session	    optional	  pam_mount.so
-session	optional	pam_ldap.so 
-
-
 
 ## OLD
 

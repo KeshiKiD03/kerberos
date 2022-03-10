@@ -22,7 +22,6 @@
 
 auth        required      pam_env.so
 auth        sufficient    pam_unix.so try_first_pass nullok
-auth	[success=1 default=ignore]	pam_ldap.so use_first_pass
 auth        sufficient    pam_krb5.so 
 auth        required      pam_deny.so
 

@@ -14,4 +14,3 @@ docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d ke
 
 docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2hisx --privileged -it keshikid03/krb22:khostldap
 ```
-
