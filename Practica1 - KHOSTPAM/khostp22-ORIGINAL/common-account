@@ -20,9 +20,9 @@
 
 ### NEW
 
-account	sufficient	pam_unix.so
-account sufficient	pam_krb5.so
-#account required	pam_ldap.so
+account sufficient			pam_krb5.so
+
+account required			pam_unix.so
 
 
 ### OLD

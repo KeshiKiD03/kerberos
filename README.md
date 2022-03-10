@@ -54,6 +54,12 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 
 ### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KHOSTREAL (MINIMAL DEBIAN)
+ç
+### PRACTICA 4 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT
+
+### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
+
+### PRACTICA 6 TUNELES
 
 ## DEBIAN
 
