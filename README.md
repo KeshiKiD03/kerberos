@@ -113,9 +113,15 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 1. Abrir la máquina de DEBIAN MINIMAL
 
-2. Configurar el /etc/hosts.
+2. Configurar el /etc/hosts de AWS.
 
-3. 
+3. Abrir en AWS el `kserver.edt.org`.
+
+4. Abrir el MINILINUX y conectarse por ssh --> `ssh aaron@i14`.
+
+5. Modificaar el /etc/hosts de i14 para que apunte a AWS.
+
+6. Instalar el KRB5-USER y probar de autenticar.
 
 ### PRACTICA 4 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT
 
