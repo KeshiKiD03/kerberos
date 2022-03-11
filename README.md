@@ -50,7 +50,7 @@ docker run --rm --name khostp.edt.org -h khostp.edt.org --net 2hisx -it keshikid
 
 7. Instalar KRB5-USER.
 
-8. Copiar el krb5.conf a /etc/krb.conf
+8. Copiar el krb5.conf a `/etc/krb.conf`
 
 9. Modificar el /etc/hosts. `1.2.3.4 kserver.edt.org`
 
@@ -106,6 +106,16 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 6. Probar todo y modificar el /etc/hosts de AMAZON - Debian ``1.2.3.4 ssh.edt.org kserver.edt.org kclient.edt.org ....``
 
+
+-------
+
+**DEBIAN MINIMAL**
+
+1. Abrir la máquina de DEBIAN MINIMAL
+
+2. Configurar el /etc/hosts.
+
+3. 
 
 ### PRACTICA 4 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT
 
