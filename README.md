@@ -79,6 +79,8 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
         * listprincs
 
 
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/KHOSTLDAP-VERIFICADO.png)
+
 ### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KCLIENT (MINIMAL DEBIAN)
 
 1. Abrir el AWS
