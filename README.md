@@ -4,11 +4,15 @@
 
 ### Kerberos Containers:
 
- * **keshikid03/krb22:kserver** 
+ * **keshikid03/krb22:kserver** --> Server Kerberos BASE
 
- * **keshikid03/krb22:kclient**
+ * **keshikid03/krb22:kclient** --> Client Kerberos BASE
 
- * **keshikid03/krb22:khostp**
+ * **keshikid03/krb22:khostp** --> Client de Kerberos + PAM
+
+ * **keshikid03/krb22:khostldap** --> Client de Kerberos + PAM + LDAP
+
+* **keshikid03/krb22:kclientssh** --> Client de Kerberos + SSH
 
 ### PRÁCTICA 1 KSERVER Y KHOST + KHOST DE PAM
 
@@ -126,6 +130,11 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 6. Instalar el KRB5-USER y probar de autenticar.
 
 ### PRACTICA 4 KSERVER + SSHD.EDT.ORG (KCLIENT) + KCLIENT-SSH
+
+```
+docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclient
+```
+
 
 #### Requisitos
 
