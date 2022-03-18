@@ -1,7 +1,7 @@
 #! /bin/bash
 
 cp /opt/docker/krb5.conf /etc/krb5.conf 	# Sobreescrivim els fitxers per els nostres.
-cp /opt/docker/sshd_config /etc/ssh/sshd_config
+#cp /opt/docker/sshd_config /etc/ssh/sshd_config
 cp /opt/docker/ssh_config /etc/ssh/ssh_config
 
 # Generem la CLAU de HOST - Iniciem amb marta - kmarta i fem el kadmin: ktadd -k ....
