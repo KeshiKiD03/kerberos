@@ -353,6 +353,8 @@ ssh -v marta@sshd.edt.org
 
 #### AUTOMATIZADO (SIN DETACH)
 
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/Acceso-OK.png)
+
 #### KCLIENTSSH (SERVIDOR)
 
 1. Dockerfile
@@ -417,7 +419,9 @@ mkdir /run/sshd
 
 * Se ejecutan los USUARIOS UNIX LOCALES sin password y Kerberos con Password.
 
-* Se inicia el SSH tanto como INTERACTIVO como DETACH
+* Se inicia el SSH tanto como INTERACTIVO como DETACH.
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/SSH-KRB-DETACH.png)
 
 ----------------------------------------------------------------------------------
 
@@ -440,6 +444,7 @@ docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb
 
     * `kinit kuser01` --> `ssh -v kuser01@sshd.edt.org`.
 
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/kclientssh0.png)
 
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
