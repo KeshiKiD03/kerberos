@@ -130,6 +130,8 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 
 8. Al `iniciar sesión` deberíamos tener un `ticket de Kerberos`. Ya que tenemos los módulos de PAM de Kerberos activados.
 
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/KHOSTLDAP-VERIFICADO.png)
+
 
 ### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KCLIENT (MINIMAL DEBIAN)
 
@@ -285,7 +287,7 @@ kinit marta
 klist
 ```
 
-![hola](6-r.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/6-r.png)
 
 ```
 kadmin
@@ -295,7 +297,7 @@ kadmin
 listprincs
 ```
 
-![hola](7-r.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/7-r.png)
 
 10. Generamos el `KRB5.KEYTAB`.
 
@@ -303,9 +305,9 @@ listprincs
 ktadd -k /etc/krb5.keytab host/sshd.edt.org
 ```
 
-![hola](1-Ktadd.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/1-Ktadd.png)
 
-![hola](2-CatKeytab.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/2-CatKeytab.png)
 
 
 
@@ -335,12 +337,14 @@ do
 done
 ```
 
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/3-Users.png)
+
 13. Acceder por `SSH` a los usuarios de `Kerberos` `marta` y `pere`.
 ```
 ssh -v marta@sshd.edt.org
 ```
 
-![hola](final.jpeg)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/final.jpeg)
 
 
 #### AUTOMATIZADO (SIN DETACH)
