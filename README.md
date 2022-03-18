@@ -38,7 +38,13 @@ docker run --rm --name khostp.edt.org -h khostp.edt.org --net 2hisx -it keshikid
 
     * kadmin.local
 
-### PRACTICA MINILINUX
+### PRACTICA KCLIENT + KSERVER
+
+1. Preparar el KSERVER *Interactivo* o *Detach* con *-no fork*
+
+2. Abrir el KCLIENT y hacer peticiones al **KSERVER**.
+
+### PRACTICA MINILINUX (OPCIONAL)
 
 1. Instalar el DEBIAN 11 POR RED EN UNA MÁQUINA REAL.
 
@@ -50,13 +56,28 @@ docker run --rm --name khostp.edt.org -h khostp.edt.org --net 2hisx -it keshikid
 
 5. Modificar el GRUB.
 
-6. Instalar el SSH y hacer el SSH Desatendido.
+6. Instalar el `SSH y hacer el `SSH Desatendido`.
 
-7. Instalar KRB5-USER.
+7. Instalar `KRB5-USER`.
 
 8. Copiar el krb5.conf a `/etc/krb.conf`
 
 9. Modificar el /etc/hosts. `1.2.3.4 kserver.edt.org`
+
+### PRACTICA 1 KHOSTPAM
+
+1. Modificar el KCLIENT y transformarlo en KHOSTPAM.
+
+2. Modificar los COMMON PERTINENTES.
+
+3. Copiar el `/opt/docker/krb5.conf` a `/etc/krb5.conf`.
+
+4. Añadir los usuarios locales CON PASSWORD y los KUSERS sin PASSWORD.
+
+5. Probar el acceso con `login local01` + `login local02` y posteriormente `login kuser01`
+
+6. Al `iniciar sesión` deberíamos tener un `ticket de Kerberos`. Ya que tenemos los módulos de PAM de Kerberos activados.
+
 
 ### PRACTICA 2 KHOSTLDAP
 
@@ -84,6 +105,31 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/KHOSTLDAP-VERIFICADO.png)
+
+1. Modificar el KCLIENT y transformarlo en KHOSTLDAP.
+
+2. Modificar los COMMON PERTINENTES.
+
+3. Tener instalado el `ldap-utils`. Copiar el `/opt/docker/krb5.conf` a `/etc/krb5.conf`.
+
+4. Copiar los ficheros pertinentes para la resolución de `LDAP-NSSWITCH`:
+```
+cp /opt/docker/ldap.conf /etc/ldap/ldap.conf
+cp /opt/docker/login.defs /etc/login.defs
+cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
+cp /opt/docker/nslcd.conf /etc/nslcd.conf
+```
+
+4. Añadir los usuarios locales CON PASSWORD y los KUSERS sin PASSWORD.
+
+5. Encender los SERVICIOS `/usr/sbin/nscd` y `/usr/sbin/nslcd`.
+
+6. Probamos conectividad con `getent passwd` y `getent group`.
+
+7. Probar el acceso con `login local01` + `login local02` y posteriormente `login kuser01` y luego volver con `login local01` y `su -l pere`
+
+8. Al `iniciar sesión` deberíamos tener un `ticket de Kerberos`. Ya que tenemos los módulos de PAM de Kerberos activados.
+
 
 ### PRACTICA 3 AWS + KSERVER + KHOSTP + KHOSTLDAP ---- KCLIENT (MINIMAL DEBIAN)
 
@@ -132,7 +178,7 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 ### PRACTICA 4 KSERVER + SSHD.EDT.ORG (KCLIENT) + KCLIENT-SSH
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclient
+docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclientssh
 ```
 
 
@@ -144,7 +190,7 @@ docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/k
 
 - KRB5-USER
 
-- MLOCATE / NET-TOOLS
+- vim tree nmap mlocate less man procps ldap-utils iproute2 net-tools
 
 
 #### INTERACTIVO
@@ -297,38 +343,29 @@ ssh -v marta@sshd.edt.org
 ![hola](final.jpeg)
 
 
+#### AUTOMATIZADO (SIN DETACH)
 
-14. Configurar el fichero `/etc/ssh/sshd_config`.
+1. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-15. Configurar el fichero `/etc/ssh/sshd_config`.
+2. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-16. Configurar el fichero `/etc/ssh/sshd_config`.
+3. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-17. Configurar el fichero `/etc/ssh/sshd_config`.
+4. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-18. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-19. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-20. Configurar el fichero `/etc/ssh/sshd_config`.
+5. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
@@ -338,49 +375,17 @@ sudo vim /etc/ssh/sshd_config
 sudo vim /etc/ssh/sshd_config
 ```
 
-#### DETACH
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
+7. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-6. Configurar el fichero `/etc/ssh/sshd_config`.
+8. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
-```
-sudo vim /etc/ssh/sshd_config
-```
-
-6. Configurar el fichero `/etc/ssh/sshd_config`.
+9. Configurar el fichero `/etc/ssh/sshd_config`.
 ```
 sudo vim /etc/ssh/sshd_config
 ```
