@@ -165,4 +165,3 @@ docker build -t keshikid03/krb22:khostp .
 
 8. Verificar con khost de PAM.
 
-* 
