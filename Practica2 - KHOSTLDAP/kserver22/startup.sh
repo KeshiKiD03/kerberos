@@ -27,9 +27,17 @@ done
 
 kadmin.local -q "addprinc -randkey host/sshd.edt.org"
 
+# INTERACTIVO
+
 /etc/init.d/krb5-admin-server start
 /etc/init.d/krb5-kdc start
 /etc/init.d/krb5-admin-server status
 /etc/init.d/krb5-kdc status
+
+# DETACH
+
+# /usr/sbin/krb5kdc
+# /usr/sbin/kadmind -nofork
+
 
 /bin/bash

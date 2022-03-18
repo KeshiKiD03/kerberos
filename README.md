@@ -111,6 +111,8 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 **DEBIAN MINIMAL**
 
+* apt-get install gnome-nettool
+
 1. Abrir la máquina de DEBIAN MINIMAL
 
 2. Configurar el /etc/hosts de AWS.
@@ -123,9 +125,261 @@ docker run --rm --name khostldap.edt.org --hostname khostldap.edt.org --net 2his
 
 6. Instalar el KRB5-USER y probar de autenticar.
 
-### PRACTICA 4 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT
+### PRACTICA 4 KSERVER + SSHD.EDT.ORG (KCLIENT) + KCLIENT-SSH
+
+#### Requisitos
+
+**PAQUETES**
+
+- SSH
+
+- KRB5-USER
+
+- MLOCATE / NET-TOOLS
 
 
+#### INTERACTIVO
+
+1. Encender KSERVER en modo DETACH `(-nofork)` o INTERACTIVO
+
+2. Encender Kclient para tunear.
+
+```
+docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclient
+```
+
+3. Instalar `SSH` y `net-tools`.
+```
+sudo apt-get install ssh
+```
+
+```
+sudo apt-get install net-tools
+```
+
+4. Verificar el proceso para el SERVICIO SSH
+```
+service ssh status
+
+```
+sshd is not running ... `failed`!
+
+```
+service ssh start
+```
+
+running
+
+**DETACH** --> /usr/sbin/sshd *En startup.sh*
+```
+mkdir /run/sshd
+/usr/sbin/sshd -D
+```
+
+
+5. Tunear el `/etc/hosts` de `SSHD.EDT.ORG`
+```
+vim /etc/hosts
+```
+
+```
+172.19.0.3	sshd.edt.org sshd
+172.19.0.2	kserver.edt.org kserver
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+*Modificamos*
+
+```
+KerberosAuthentication yes
+KerberosTicketCleanup yes
+
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+
+```
+
+
+7. Configurar el fichero `/etc/ssh/ssh_config`.
+```
+sudo vim /etc/ssh/ssh_config
+```
+
+*Modificamos*
+
+```
+   GSSAPIAuthentication yes
+   GSSAPIDelegateCredentials yes
+```
+
+8. Reiniciar el sSH
+```
+service ssh restart
+```
+
+9. Iniciamos sesión con algún usuario `Kerberos Administrador` --> `Marta`
+```
+kinit marta
+```
+
+```
+klist
+```
+
+![hola](6-r.png)
+
+```
+kadmin
+```
+
+```
+listprincs
+```
+
+![hola](7-r.png)
+
+10. Generamos el `KRB5.KEYTAB`.
+
+```
+ktadd -k /etc/krb5.keytab host/sshd.edt.org
+```
+
+![hola](1-Ktadd.png)
+
+![hola](2-CatKeytab.png)
+
+
+
+11. Reiniciar el SSH.
+```
+service ssh restart
+```
+
+12. Añadir los usuarios `locales` `con PASSWORD` y los de `kerberos` `sin PASSWORD` --> Luego lo pondremos en el `STARTUP.SH`
+
+* `UNIX with PASSWORD`
+
+```
+for user in local01 local02 local03
+do
+  useradd $user
+  echo -e "$user\n$user\n" | passwd $user  
+done	
+```
+
+* `Kerberos sin PASSWORD`
+
+```
+for user in anna pere marta jordi pau kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
+do
+  useradd $user
+done
+```
+
+13. Acceder por `SSH` a los usuarios de `Kerberos` `marta` y `pere`.
+```
+ssh -v marta@sshd.edt.org
+```
+
+![hola](final.jpeg)
+
+
+
+14. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+15. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+16. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+17. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+18. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+19. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+20. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+#### DETACH
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+6. Configurar el fichero `/etc/ssh/sshd_config`.
+```
+sudo vim /etc/ssh/sshd_config
+```
 
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
