@@ -12,7 +12,9 @@
 
  * **keshikid03/krb22:khostldap** --> Client de Kerberos + PAM + LDAP
 
-* **keshikid03/krb22:kclientssh** --> Client de Kerberos + SSH
+* **keshikid03/krb22:kclientssh** --> Client de Kerberos + SSH Servidor + Keytab
+
+* **keshikid03/krb22:kclientssh0** --> Client de Kerberos + SSH Cliente
 
 ### PRÁCTICA 1 KSERVER Y KHOST + KHOST DE PAM
 
@@ -424,7 +426,7 @@ mkdir /run/sshd
 * Hacer lo mismo para el kclient-ssh (kclientssh0) normal pero sin el `sshd_config` configurado
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclientssh0
+docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb22:kclientssh0
 ```
 
 * **IMPORTANTE**: Modificar el `/etc/hosts`:

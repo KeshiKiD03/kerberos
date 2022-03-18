@@ -6,7 +6,7 @@ cp /opt/docker/ssh_config /etc/ssh/ssh_config
 
 # Generem la CLAU de HOST - Iniciem amb marta - kmarta i fem el kadmin: ktadd -k ....
 
-kadmin -p admin -w kadmin -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
+#kadmin -p admin -w kadmin -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
 
 # Creació d'usuaris Locals w Password
 
