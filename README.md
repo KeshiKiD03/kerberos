@@ -494,11 +494,11 @@ ssh -v -p 1022 pere@sshd.edt.org
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws1.jpeg)
 
-![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws2.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws2.PNG)
 
-![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws3.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws3.PNG)
 
-![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws4.png)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws4.PNG)
 
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
