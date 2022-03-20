@@ -10,24 +10,24 @@ cp /opt/docker/ssh_config /etc/ssh/ssh_config
 
 # Creació d'usuaris Locals w Password
 
-for user in local01 local02 local03
-do
-  useradd $user
-  echo -e "$user\n$user\n" | passwd $user
-done
+#for user in local01 local02 local03
+#do
+#  useradd $user
+#  echo -e "$user\n$user\n" | passwd $user
+#done
 
 # Creació d'usuaris Kerberos no Password
 
-for user in anna pere marta jordi pau kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
-do
-  useradd $user
-done
+#for user in anna pere marta jordi pau kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
+#do
+#  useradd $user
+#done
 
 mkdir /run/sshd
 /usr/sbin/sshd && echo "SSH Activado"
 
 # Detach
-/usr/sbin/sshd -D && echo "SSH Activado"
+#/usr/sbin/sshd -D && echo "SSH Activado"
 
 # Comentar esto if detach
 /bin/bash
