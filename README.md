@@ -181,8 +181,16 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 
 ### PRACTICA 4 KSERVER + SSHD.EDT.ORG (KCLIENT) + KCLIENT-SSH
 
+#### INTERACTIVO
+
 ```
 docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclientssh
+```
+
+#### DETACH
+
+```
+docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -d keshikid03/krb22:kclientssh
 ```
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/SSH%20-%20KERBEROS.jpg)
