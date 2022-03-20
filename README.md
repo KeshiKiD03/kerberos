@@ -474,6 +474,9 @@ docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb
 ```
 docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb22:kclientssh0
 ```
+* **IMPORTANTE**: Abrir el DOCKER de SSHD.EDT.ORG habiendolo abierto con `-p 1022:22`:
+
+* **IMPORTANTE**: Añadir un SECURITY GROUP --> Para el puerto 1022 en AMAZON AWS:
 
 * **IMPORTANTE**: Modificar el `/etc/hosts`:
 
