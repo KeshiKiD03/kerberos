@@ -24,9 +24,9 @@ do
 done
 
 mkdir /run/sshd
-/usr/sbin/sshd && echo "SSH Activado"
+#/usr/sbin/sshd && echo "SSH Activado"
 
 # Detach
-#/usr/sbin/sshd -D && echo "SSH Activado"
+/usr/sbin/sshd -D && echo "SSH Activado"
 
 /bin/bash
