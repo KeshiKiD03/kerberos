@@ -193,14 +193,16 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 #### INTERACTIVO
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kclientssh
 ```
 
 #### DETACH
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -d keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d keshikid03/krb22:kclientssh
 ```
+
+> IMPORTANTE PROPAGAR EL PUERTO 1022:22 - Para AMAZON AWS ya que se accederá por el puerto 1022 a SSH y 22 dentro de la AMI
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/SSH%20-%20KERBEROS.jpg)
 
@@ -223,7 +225,7 @@ docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -d keshikid03/kr
 2. Encender Kclient para tunear.
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org --net 2hisx -it keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kclientssh
 ```
 
 3. Instalar `SSH` y `net-tools`.
@@ -462,6 +464,41 @@ docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb
     * `kinit kuser01` --> `ssh -v kuser01@sshd.edt.org`.
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/kclientssh0.png)
+
+----------------------------------------------------------------------------------
+
+#### KCLIENT-SSH0 (CLIENTE-AWS)
+
+* Hacer lo mismo para el kclient-ssh (kclientssh0) normal pero sin el `sshd_config` configurado
+
+```
+docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb22:kclientssh0
+```
+
+* **IMPORTANTE**: Modificar el `/etc/hosts`:
+
+```
+ 54.89.174.191 sshd.edt.org kserver.edt.org
+```
+
+> IMPORTANTE QUE **SSHD.EDT.ORG** ESTÉ CON EL PUERTO 1022 PROPAGADO YA QUE SE ACCEDERÁ DESDE AHÍ A SSH
+```
+ssh -v -p 1022 pere@sshd.edt.org
+```
+
+* Probar de acceder por SSH al Servidor
+
+    * `kinit kuser01` --> `ssh -v -p 1022 kuser01@sshd.edt.org`.
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/kclientssh0.png)
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws1.jpeg)
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws2.png)
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws3.png)
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws4.png)
 
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
