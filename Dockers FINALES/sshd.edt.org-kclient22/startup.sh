@@ -29,4 +29,4 @@ mkdir /run/sshd
 # Detach
 /usr/sbin/sshd -D && echo "SSH Activado"
 
-/bin/bash
+#/bin/bash
