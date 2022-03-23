@@ -596,7 +596,7 @@ bash startup
 
 5. Hemos entrado perfectamente y `sin contraseña`.
 
-![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L2.PNG)
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L2.png)
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L1.PNG)
 
