@@ -503,6 +503,77 @@ ssh -v -p 1022 pere@sshd.edt.org
 
 ![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/aws1.jpeg)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### AWS - KserverSSH + LdapGroup + SSHD.EDT.ORG < ----------- KclientSSHLdap
+
+1. Las máquinas están actualizadas en mi Dockerhub `keshikid03/krb22:kserver` + `keshikid03/krb22:kserverssh` + `keshikid03/krb22:kclientsshldap`
+
+2. Iniciar sesión en AWS: [AWS](https://awsacademy.instructure.com/login/canvas) --> Abrir EC2 y abrir mi máquina Cloud Keshi Debian.
+
+   * Previamente deberíamos haber propagado los PUERTOS en Security Groups (Hecho antes).
+
+3. Iniciar por SSH `ssh -i KeshiProtable.pem admin@ip_publica_aws`.
+
+4. Desplegar las Dockers en AWS:
+
+```
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 keshikid03/ldap21:group
+```
+
+```
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net 2hisx -p 88:88 -p 464:464 -p 749:749 -d keshikid03/krb22:kserver
+```
+
+```
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d keshikid03/krb22:kserverssh
+```
+
+
+5. ``IMPORTANTE``: La SSHD tiene que desplegarse en 1022:22 ya que accederemos por el puerto 1022 desde el HOST CLIENTE (Casa) a AWS.
+
+6. En HOST Local (Casa) en VirtualBox o en Ubuntu mismo, desplegar el `keshikid03/krb22:kclientsshldap`
+
+```
+docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb22:kclientsshldap /bin/bash /bin/bash
+```
+
+7. Dentro de `kclientsshldap` modificar el `/etc/hosts`.
+
+```
+ip_publica_AWS    sshd.edt.org kserver.edt.org ldap.edt.org
+```
+
+8. Ejecutar el `startup.sh`
+
+```
+bash startup
+```
+
+9. Probar el funcionamiento de LDAP con un `getent passwd` o `ldapsearch -x -LLL`.
+
+10. Probar el funcionamiento de Kerberos con un `kinit pere` o `kinit kuser01`.
+
+##### Verificación: KERBEROS - LDAP
+
+1. Probamos con un `login local01` o `login local02` y posteriormente `login kuser01` y verificamos con `klist` para ver que nos ha dado un *TICKET DE KERBEROS*.
+
+2. A partir de ahora realizamos un `su -l pere` y entramos a `/tmp/home/pere` que es el Directorio de Pere en LDAP.
+
+3. Observamos que funciona.
+
+##### Verificación: KERBEROS - SSH
+
+1. Realizamos un `kinit pere`
+
+2. Verificamos con un `klist`
+
+3. Hacemos el SSH: `ssh -v -p 1022 pere@sshd.edt.org`.
+
+4. Con el *debug*, observamos que nos hace un method: `gssapi-with-mic` y posteriormente `Delegating Credentials`
+
+5. Hemos entrado perfectamente y `sin contraseña`.
+
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
 ### PRACTICA 6 TUNELES
