@@ -12,7 +12,7 @@
 
  * **keshikid03/krb22:khostldap** --> Client de Kerberos + PAM + LDAP
 
-* **keshikid03/krb22:kclientssh** --> Client de Kerberos + SSH Servidor + Keytab
+* **keshikid03/krb22:kserverssh** --> Client de Kerberos + SSH Servidor + Keytab
 
 * **keshikid03/krb22:kclientssh0** --> Client de Kerberos + SSH Cliente
 
@@ -193,13 +193,13 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 #### INTERACTIVO
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kserverssh
 ```
 
 #### DETACH
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d keshikid03/krb22:kserverssh
 ```
 
 > IMPORTANTE PROPAGAR EL PUERTO 1022:22 - Para AMAZON AWS ya que se accederá por el puerto 1022 a SSH y 22 dentro de la AMI
@@ -225,7 +225,7 @@ docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d ke
 2. Encender Kclient para tunear.
 
 ```
-docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kclientssh
+docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -it keshikid03/krb22:kserverssh
 ```
 
 3. Instalar `SSH` y `net-tools`.
