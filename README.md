@@ -529,30 +529,50 @@ docker run --rm --name kserver.edt.org -h kserver.edt.org --net 2hisx -p 88:88 -
 docker run --rm --name sshd.edt.org -h sshd.edt.org -p 1022:22 --net 2hisx -d keshikid03/krb22:kserverssh
 ```
 
+* Verificar con DOCKER PS
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L7.PNG)
+
 
 5. ``IMPORTANTE``: La SSHD tiene que desplegarse en 1022:22 ya que accederemos por el puerto 1022 desde el HOST CLIENTE (Casa) a AWS.
 
-6. En HOST Local (Casa) en VirtualBox o en Ubuntu mismo, desplegar el `keshikid03/krb22:kclientsshldap`
+6. Verificar IPs correctamente:
+
+```
+nmap localhost
+```
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L5.PNG)
+
+```
+docker network inspect 2hisx
+```
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L4.PNG)
+
+7. Anotar las IP de los DOCKERS y ponerlo en `/etc/hosts`.
+
+8. En HOST Local (Casa) en VirtualBox o en Ubuntu mismo, desplegar el `keshikid03/krb22:kclientsshldap`
 
 ```
 docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -it keshikid03/krb22:kclientsshldap /bin/bash /bin/bash
 ```
 
-7. Dentro de `kclientsshldap` modificar el `/etc/hosts`.
+9. Dentro de `kclientsshldap` modificar el `/etc/hosts`.
 
 ```
 ip_publica_AWS    sshd.edt.org kserver.edt.org ldap.edt.org
 ```
 
-8. Ejecutar el `startup.sh`
+10. Ejecutar el `startup.sh`
 
 ```
 bash startup
 ```
 
-9. Probar el funcionamiento de LDAP con un `getent passwd` o `ldapsearch -x -LLL`.
+11. Probar el funcionamiento de LDAP con un `getent passwd` o `ldapsearch -x -LLL`.
 
-10. Probar el funcionamiento de Kerberos con un `kinit pere` o `kinit kuser01`.
+12. Probar el funcionamiento de Kerberos con un `kinit pere` o `kinit kuser01`.
 
 ##### Verificación: KERBEROS - LDAP
 
@@ -561,6 +581,8 @@ bash startup
 2. A partir de ahora realizamos un `su -l pere` y entramos a `/tmp/home/pere` que es el Directorio de Pere en LDAP.
 
 3. Observamos que funciona.
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L3.PNG)
 
 ##### Verificación: KERBEROS - SSH
 
@@ -573,6 +595,10 @@ bash startup
 4. Con el *debug*, observamos que nos hace un method: `gssapi-with-mic` y posteriormente `Delegating Credentials`
 
 5. Hemos entrado perfectamente y `sin contraseña`.
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L2.PNG)
+
+![hola](https://github.com/KeshiKiD03/kerberos/blob/main/Photos/L1.PNG)
 
 ### PRACTICA 5 KSERVER + SSH.EDT.ORG (KCLIENT) + KCLIENT + LDAP CERTIFICADO
 
