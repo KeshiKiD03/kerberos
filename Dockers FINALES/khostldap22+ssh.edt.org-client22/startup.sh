@@ -21,7 +21,7 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 
 # cp /opt/docker/pam_mount.conf.xml /etc/security/pam_mount.conf.xml
 
-# Lo activaremos más tarde lo arriba
+# Lo activaremos mas tarde lo arriba
 
 # Copiamos Archivos de PAM
 
@@ -36,7 +36,7 @@ cp /opt/docker/common-session /etc/pam.d/common-session
 
 ## NEW
 
-# Creació d'usuaris Locals w Password
+# Creacio d usuaris Locals w Password
 
 for user in local01 local02 local03
 do
@@ -44,9 +44,9 @@ do
   echo -e "$user\n$user\n" | passwd $user
 done
 
-# Creació d'usuaris Kerberos no Password
+# Creacio d usuaris Kerberos no Password
 
-for user in anna pere marta jordi pau kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
+for user in kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
 do
   useradd $user
 done
@@ -55,15 +55,15 @@ mkdir /run/sshd
 /usr/sbin/sshd && echo "SSH Activado"
 
 
-# Añade grupo local
+# Anade grupo local
 
 #groupadd localU
 
-# Añade un grupo kusers
+# Anade un grupo kusers
 
 #groupadd kusers
 
-# Añadir usuarios
+# Anadir usuarios
 
 #useradd -g users -G localU local01
 #useradd -g users -G localU local02
@@ -72,7 +72,7 @@ mkdir /run/sshd
 #useradd -g users -G kusers kuser02
 #useradd -g users -G kusers kuser03
 
-# Añade password
+# Anade password
 
 #echo -e "local01\nlocal01" | passwd local01
 #echo -e "local02\nlocal02" | passwd local02
