@@ -4,9 +4,9 @@
 
 ### Kerberos Containers:
 
- * **keshikid03/krb22:kclient** 
+ * **keshikid03/krb22:kserverssh** 
 
 
 ```
-docker run --rm --name kclient.edt.org -h kclient.edt.org --net 2hisx -it keshikid03/krb22:kclient
+docker run --rm --name kclient.edt.org -h kclient.edt.org --net 2hisx -d keshikid03/krb22:kserverssh
 ```
