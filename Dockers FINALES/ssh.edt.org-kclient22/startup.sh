@@ -8,7 +8,7 @@ cp /opt/docker/ssh_config /etc/ssh/ssh_config
 
 # kadmin -p admin -w kadmin -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
 
-# Creació d'usuaris Locals w Password
+# Creacio dusuaris Locals w Password
 
 for user in local01 local02 local03
 do
@@ -16,7 +16,7 @@ do
   echo -e "$user\n$user\n" | passwd $user
 done
 
-# Creació d'usuaris Kerberos no Password
+# Creacio dusuaris Kerberos no Password
 
 for user in anna pere marta jordi pau kuser01 kuser02 kuser03 kuser04 kuser05 kuser06
 do
